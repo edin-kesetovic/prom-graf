@@ -23,12 +23,12 @@ services:
     networks:
       - promnet
 
-    depends_on:
-      - alertmanager
-
     restart: always
     deploy:
       mode: global    
+    links:
+      - "node-exporter:node-exporter"
+      - "ecs-exporter:ecs-exporter"
 
   node-exporter:
     image: prom/node-exporter
@@ -45,7 +45,7 @@ services:
     ports:
       - 9100:9100
     networks:
-      - back-tier
+      - promnet
     restart: always
     deploy:
       mode: global
@@ -58,7 +58,7 @@ services:
     ports: 
       - 9222:9222
     networks:
-      - back-tier
+      - promnet
     restart: always
     deploy:
       mode: global
