@@ -32,6 +32,7 @@ services:
 
   node-exporter:
     image: prom/node-exporter
+    container_name: node-exporter
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -51,6 +52,7 @@ services:
   
   ecs-exporter:
     image: slok/ecs-exporter
+    container_name: ecs-exporter
     command:
       - '-aws.region="eu-west-1"'
     ports: 
