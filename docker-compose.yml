@@ -53,7 +53,7 @@ services:
     image: slok/ecs-exporter
     container_name: ecs-exporter
     command:
-      - '-aws.region="eu-west-1"'
+      - '-aws.region=eu-west-1'
     ports: 
       - 9222:9222
     networks:
